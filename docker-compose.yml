@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  ios_db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ios_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data-dev:/var/lib/postgresql/data
+
+  server:
+    build: ./server
+    ports:
+      - "3333:3333"
+    environment:
+      PG_HOST: ios_db
+      PG_USER: postgres
+      PG_PASSWORD: password
+      PG_DATABASE: ios_dev
+    depends_on:
+      - ios_db
+
+volumes:
+  postgres-data-dev:

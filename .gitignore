@@ -1,0 +1,7 @@
+**/*/node_modules
+server/build
+server/coverage
+.vscode
+.DS_STORE
+**/*/tmp
+*/package-lock.json
