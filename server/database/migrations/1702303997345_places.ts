@@ -7,8 +7,8 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('name')
-      table.float('lattitude')
-      table.float('longitude')
+      table.double('lattitude')
+      table.double('longitude')
     })
   }
 

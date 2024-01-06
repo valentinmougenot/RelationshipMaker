@@ -5,9 +5,6 @@ export default class User extends BaseModel {
   public id: number
 
   @column()
-  public uuid: string
-
-  @column()
   public firstName: string
 
   @column()

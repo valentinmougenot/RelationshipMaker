@@ -23,3 +23,13 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async () => {
   return { hello: 'world' }
 })
+
+Route.group(() => {
+  Route.get("/:id", "UsersController.getUserById");
+  Route.put("/:id/place", "UsersController.togglePlace");
+}).prefix("/users");
+
+Route.group(() => {
+  Route.get("/", "PlacesController.getAllPlaces");
+  Route.get("/:id/users", "PlacesController.getUsersByPlace");
+}).prefix("/places");
