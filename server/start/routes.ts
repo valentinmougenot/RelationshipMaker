@@ -25,11 +25,13 @@ Route.get('/', async () => {
 })
 
 Route.group(() => {
-  Route.get("/:id", "UsersController.getUserById");
-  Route.put("/:id/place", "UsersController.togglePlace");
-}).prefix("/users");
+  Route.get('/:id', 'UsersController.getUserById')
+  Route.post('/', 'UsersController.createUser')
+  Route.put('/:id', 'UsersController.updateUser')
+  Route.put('/:id/place', 'UsersController.togglePlace')
+}).prefix('/users')
 
 Route.group(() => {
-  Route.get("/", "PlacesController.getAllPlaces");
-  Route.get("/:id/users", "PlacesController.getUsersByPlace");
-}).prefix("/places");
+  Route.get('/', 'PlacesController.getAllPlaces')
+  Route.get('/:id/users', 'PlacesController.getUsersByPlace')
+}).prefix('/places')
