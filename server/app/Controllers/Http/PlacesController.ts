@@ -8,6 +8,36 @@ export default class PlacesController {
     return response.ok(places)
   }
 
+  public async createPlace({ request, response }: HttpContextContract) {
+    const { name, lattitude, longitude } = request.body()
+    const place = await Place.create({ name, lattitude, longitude })
+    return response.created(place)
+  }
+
+  public async updatePlace({ params, request, response }: HttpContextContract) {
+    const place = await Place.findOrFail(params.id)
+    if (!place) {
+      return response.notFound()
+    }
+
+    const { name, lattitude, longitude } = request.body()
+    place.name = name
+    place.lattitude = lattitude
+    place.longitude = longitude
+    await place.save()
+    return response.noContent()
+  }
+
+  public async deletePlace({ params, response }: HttpContextContract) {
+    const place = await Place.findOrFail(params.id)
+    if (!place) {
+      return response.notFound()
+    }
+
+    await place.delete()
+    return response.noContent()
+  }
+
   public async getUsersByPlace({ response, params }: HttpContextContract) {
     const users = await User.query().where('place_id', params.id)
     return response.ok(users)

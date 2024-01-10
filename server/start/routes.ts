@@ -33,5 +33,8 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get('/', 'PlacesController.getAllPlaces')
+  Route.post('/', 'PlacesController.createPlace')
+  Route.put('/:id', 'PlacesController.updatePlace')
+  Route.delete('/:id', 'PlacesController.deletePlace')
   Route.get('/:id/users', 'PlacesController.getUsersByPlace')
 }).prefix('/places')
