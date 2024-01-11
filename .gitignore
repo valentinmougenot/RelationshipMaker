@@ -5,3 +5,5 @@ server/coverage
 .DS_STORE
 **/*/tmp
 */package-lock.json
+**/*/Dockerfile
+docker-compose.prod.yml
