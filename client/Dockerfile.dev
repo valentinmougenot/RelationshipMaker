@@ -1,0 +1,14 @@
+FROM node:latest
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 5173
+
+ENV PUBLIC_MAIN_API_BASE_URL=http://localhost:3333
+
+CMD ["npx", "vite", "dev", "--host"]

@@ -4,17 +4,16 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: ios_dev
+      POSTGRES_PASSWORD: jkf&.i3+eTDkds49
+      POSTGRES_DB: ios_prod
     ports:
       - "5432:5432"
     volumes:
-      - postgres-data-dev:/var/lib/postgresql/data
+      - postgres-data-prod:/var/lib/postgresql/data
 
   server:
     build:
       context: ./server
-      dockerfile: Dockerfile.dev
     ports:
       - "3333:3333"
     depends_on:
@@ -23,11 +22,10 @@ services:
   client:
     build:
       context: ./client
-      dockerfile: Dockerfile.dev
     ports:
       - "5173:5173"
     depends_on:
       - server
 
 volumes:
-  postgres-data-dev:
+  postgres-data-prod:

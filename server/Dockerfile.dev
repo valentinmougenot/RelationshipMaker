@@ -1,0 +1,24 @@
+FROM node:latest
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+EXPOSE 3333
+
+ENV NODE_ENV=development
+ENV PORT=3333
+ENV HOST=0.0.0.0
+ENV APP_KEY=52rnWqEVX9hmcvh00N3DFT6PJxvYRgha
+ENV DRIVE_DISK=local
+ENV DB_CONNECTION=pg
+ENV PG_DB_NAME=ios_dev
+ENV PG_HOST=ios_db
+ENV PG_USER=postgres
+ENV PG_PASSWORD=password
+ENV PG_DATABASE=ios_dev
+
+CMD ["node", "ace", "serve"]
