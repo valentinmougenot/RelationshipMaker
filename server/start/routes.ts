@@ -25,10 +25,14 @@ Route.get('/', async () => {
 })
 
 Route.group(() => {
+  Route.get('/', 'UsersController.getAllUsers')
   Route.get('/:id', 'UsersController.getUserById')
   Route.post('/', 'UsersController.createUser')
   Route.put('/:id', 'UsersController.updateUser')
+  Route.delete('/:id', 'UsersController.deleteUser')
   Route.put('/:id/place', 'UsersController.togglePlace')
+  Route.post('/:id/avatar', 'UsersController.uploadAvatar')
+  Route.delete('/:id/avatar', 'UsersController.deleteAvatar')
 }).prefix('/users')
 
 Route.group(() => {

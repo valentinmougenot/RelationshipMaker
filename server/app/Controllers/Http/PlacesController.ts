@@ -9,8 +9,8 @@ export default class PlacesController {
   }
 
   public async createPlace({ request, response }: HttpContextContract) {
-    const { name, lattitude, longitude } = request.body()
-    const place = await Place.create({ name, lattitude, longitude })
+    const { name, latitude, longitude } = request.body()
+    const place = await Place.create({ name, latitude, longitude })
     return response.created(place)
   }
 
@@ -20,9 +20,9 @@ export default class PlacesController {
       return response.notFound()
     }
 
-    const { name, lattitude, longitude } = request.body()
+    const { name, latitude, longitude } = request.body()
     place.name = name
-    place.lattitude = lattitude
+    place.latitude = latitude
     place.longitude = longitude
     await place.save()
     return response.noContent()

@@ -1,24 +1,24 @@
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class User extends BaseModel {
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, serializeAs: 'id' })
   public id: number
 
-  @column()
+  @column({ serializeAs: 'firstName' })
   public firstName: string
 
-  @column()
+  @column({ serializeAs: 'lastName' })
   public lastName: string
 
-  @column()
+  @column({ serializeAs: 'companyName' })
   public companyName?: string
 
-  @column()
+  @column({ serializeAs: 'biography' })
   public biography?: string
 
-  @column()
+  @column({ serializeAs: 'avatarUrl' })
   public avatarUrl?: string
 
-  @column()
+  @column({ serializeAs: 'placeId' })
   public placeId?: number
 }

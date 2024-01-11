@@ -2,16 +2,16 @@ import { BaseModel, HasMany, column, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 
 export default class Place extends BaseModel {
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, serializeAs: 'id' })
   public id: number
 
-  @column()
+  @column({ serializeAs: 'name' })
   public name: string
 
-  @column()
-  public lattitude: number
+  @column({ serializeAs: 'latitude' })
+  public latitude: number
 
-  @column()
+  @column({ serializeAs: 'longitude' })
   public longitude: number
 
   @hasMany(() => User)
